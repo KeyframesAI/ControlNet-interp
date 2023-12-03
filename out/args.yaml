@@ -1,0 +1,16 @@
+bias: 0
+cond_lr: 0.0001
+cond_steps: 100
+ddim_eta: 0
+ddim_steps: 200
+guide_scale: 10
+n_prompt: text, signature, logo, distorted, ugly, weird eyes, lowres, messy, weird
+  face, lopsided, disfigured, bad art, poorly drawn, low quality, drawing, blurry,
+  faded
+prompt: anime, ultra hd, high quality, 8k wallpaper, cinematic, highly detailed
+scale_control: 1.5
+step_schedule:
+- 0
+- 60
+- 85
+- 110

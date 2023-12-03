@@ -2,14 +2,15 @@ import sys
 from PIL import Image
 import os, pickle
 import pdb
-osp = os.path
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
-sys.path.append(osp.expandvars('$NFS/code/controlnet/controlnet'))
-from controlnet import cm
+#osp = os.path
+#os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+#sys.path.append(osp.expandvars('$NFS/code/controlnet/controlnet'))
+import cm
 
 CM = cm.ContextManager()
-img1 = Image.open('data/ana1.png').resize((768, 768))
-img2 = Image.open('data/ana2.png').resize((768, 768))
+
+img1 = Image.open('sample_imgs/ana1.png').resize((768, 768))
+img2 = Image.open('sample_imgs/ana2.png').resize((768, 768))
 # pose_path = 'data/ana_poses.pk'
 # if osp.exists(pose_path):
 #     pose1, pose2 = pickle.load(open(pose_path, 'rb'))
@@ -38,4 +39,4 @@ n_prompt = 'text, signature, logo, distorted, ugly, weird eyes, lowres, messy, w
 #                     optimize_cond=0, num_frames=17, guide_scale=10, out_dir='anakin_baseline')
 qc_prompt = 'portrait, centered, hyperrealistic, unreal engine, cinematic'
 qc_neg_prompt = 'text, signature, logo, distorted, ugly, bad anatomy, weird face, weird eyes, asymmetrical face, bad anatomy, low quality'
-CM.interpolate_qc(img1, img2, qc_prompts=(qc_prompt, qc_neg_prompt), cond_path='data/ana100.pt', prompt=prompt, n_prompt=n_prompt, optimize_cond=100, ddim_steps=200, num_frames=17, guide_scale=10, schedule_type='linear', out_dir='anakin_clip')
+CM.interpolate_qc(img1, img2, qc_prompts=(qc_prompt, qc_neg_prompt), cond_path='out/ana100.pt', prompt=prompt, n_prompt=n_prompt, optimize_cond=100, ddim_steps=200, num_frames=17, guide_scale=10, schedule_type='linear', out_dir='out')
